@@ -47,16 +47,15 @@ void enter_to_continue()
 void extract_data(std::string &str, int* arr)
 {
   int deli_pos = 0;
-  int start = 0;
   int i = 0;
 
   while ( i < 3)
   {
+    // find delimeter to split data
     deli_pos = str.find(", ");
-    // std::cout << "deli position - " << deli_pos << std::endl;
-    // std::cout << "str = " << str << std::endl;
-    std::string res = str.substr(start, deli_pos);
-    //std::cerr << "res = " << res << std::endl;
+    // std::cerr << "deli position - " << deli_pos << std::endl;
+    // std::cerr << "str = " << str << std::endl;
+    std::string res = str.substr(0, deli_pos);
 
     int n = stoi(res);
     arr[i] = n;
@@ -65,14 +64,12 @@ void extract_data(std::string &str, int* arr)
 
     if ( str.find(", ") == std::string::npos)
     {
-      // last segment
-      //std::cout << "last seg = " << str << std::endl;
+      // last data segment
       i ++;
       n = stoi(str);
       arr[i] = n;
       break;
     }
     i++;
-    start = deli_pos-2;
   }
 }
