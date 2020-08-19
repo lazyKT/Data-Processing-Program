@@ -3,6 +3,8 @@
 **/
 
 #include <iostream>
+#include <iomanip>
+
 #include "Point3D.h"
 #include "Line3D.h"
 
@@ -42,4 +44,16 @@ void Line3D::setPt2(P3 pt2) { this->pt2 = pt2; }
 void Line3D::setLength()
 {
   
+}
+
+
+// '<<' operator overloading
+std::ostream& operator<< (std::ostream& out, Line3D* l3)
+{
+  out << "[" << std::setw(4) << (l3->getPt1()).getX() << ", " << std::setw(4) << (l3->getPt1()).getY()
+    << ", " << std::setw(4) << (l3->getPt1()).getZ() << "]" << std::setw(4) << "[" << std::setw(4) 
+    << (l3->getPt2()).getX() << ", " << std::setw(4) << (l3->getPt2()).getY() << ", " << std::setw(4)
+    << (l3->getPt2()).getZ() << "]" << std::setw(10) << "LENGTH" << std::endl;
+
+  return out;
 }

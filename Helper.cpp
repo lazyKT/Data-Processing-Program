@@ -84,28 +84,45 @@ void process_data(std::set<std::string> &dataset)
     // Line2D
     else if (type == "Line2D")
     {
-      if (str.find("], ["))
-        std::cout << "separator found!!" << std::endl;
-        std::string str_1 = str.substr(0, (str.find("], [")));
-        std::string str_2 = str.substr((str.find("], ["))+4, str.length()-1);
+      std::string str_1 = str.substr(0, (str.find("], [")));
+      std::string str_2 = str.substr((str.find("], ["))+4, str.length()-1);
 
-        // create 1st point for Line2D
-        int pts1[2];
-        extract_data(str_1, pts1);
-        Point2D* point1 = new Point2D(pts1[0], pts1[1]);
-        //clean_up.push_back(point1);
+      // create 1st point for Line2D
+      int pts1[2];
+      extract_data(str_1, pts1);
+      Point2D* point1 = new Point2D(pts1[0], pts1[1]);
+      //clean_up.push_back(point1);
 
-        // create 2nd point for Point2D
-        int pts2[2];
-        extract_data(str_2, pts2);
-        Point2D* point2 = new Point2D(pts2[0], pts2[1]);
-        //clean_up.push_back(point2);
+      // create 2nd point for Point2D
+      int pts2[2];
+      extract_data(str_2, pts2);
+      Point2D* point2 = new Point2D(pts2[0], pts2[1]);
+      //clean_up.push_back(point2);
 
-        // create line2d
-        Line2D* l2 = new Line2D(*point1, *point2);
-        l2_vec.push_back(l2);
+      // create line2d
+      Line2D* l2 = new Line2D(*point1, *point2);
+      l2_vec.push_back(l2);
 
         //std::cerr << "str_1 = " << str_1 << ", str_2 = " << str_2 << std::endl;
+    }
+    // Line3D
+    else if (type == "Line3D")
+    {
+      std::string str_1 = str.substr(0, (str.find("], [")));
+      std::string str_2 = str.substr((str.find("], ["))+4, str.length()-1);
+
+      // Point-1 for Line3D
+      int pts1[3];
+      extract_data(str_1, pts1);
+      Point3D* point1 = new Point3D(pts1[0], pts1[1], pts1[2]);
+
+      // Point 2 for Line3D
+      int pts2[3];
+      extract_data(str_2, pts2);
+      Point3D* point2 = new Point3D(pts2[0], pts2[1], pts2[2]);
+
+      Line3D* l3 = new Line3D(*point1, *point2);
+      l3_vec.push_back(l3);
     }
   }
 }
@@ -163,13 +180,13 @@ std::ostream& operator<<(std::ostream& stream, Point2D* p)
 void setHeaders(std::string &filter)
 {
   if ( filter == "Point2D")
-    std::cout << std::setw(5) << "X" << std::setw(6) << "Y" << "\tDist. Fr Origin\n";
+    std::cout << std::setw(5) << "X" << std::setw(6) << "Y" << "\t\tDist. Fr Origin\n";
   
   else if ( filter == "Point3D")
     std::cout << std::setw(5) << "X" << std::setw(6) << "Y" << std::setw(5) << "Z" << "\tDist. Fr Origin\n";
   else if ( filter == "Line2D") 
   {
-    std::cout << std::setw(5) << "P1-X" << std::setw(7) << "P1-Y\t" << std::setw(6) << "P2-X" << std::setw(7) << "P2-Y\t"
+    std::cout << std::setw(5) << "P1-X" << std::setw(7) << "P1-Y\t\t" << std::setw(6) << "P2-X" << std::setw(7) << "P2-Y\t"
       << "Length\n";
   }
 
@@ -215,5 +232,10 @@ void display(std::string &filter, std::string &sort_c, std::string &sort_o)
   {
     for (Line2D* l : l2_vec)
       std::cout << l;
+  }
+  else if ( filter == "Line3D")
+  {
+    for (Line3D* l3 : l3_vec)
+      std::cout << l3;
   }
 }

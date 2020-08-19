@@ -5,6 +5,8 @@
 #ifndef LINE3D_H
 #define LINE3D_H
 
+#include <iostream>
+
 #include "Line2D.h"
 #include "Point3D.h"
 
@@ -30,6 +32,9 @@ class Line3D: public Line2D
     // setters
     void setPt1( Point3D pt1 );
     void setPt2( Point3D pt2 );
+
+    // '<<'operator overloading
+    friend std::ostream& operator<< (std::ostream&, Line3D*);
 };
 
 

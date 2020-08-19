@@ -19,7 +19,7 @@ Point3D::Point3D( int x, int y, int z )
 
 
 // destructor
-Point3D::~Point3D() { std::cout << "Poin3D destroyed" << std::endl; }
+Point3D::~Point3D() {}
 
 // calculate di
 void Point3D::setDisFrOrigin()

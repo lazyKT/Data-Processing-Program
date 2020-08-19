@@ -76,6 +76,8 @@ int main()
         /* -- Option 7 -- */
         else if (CHOICE == 7)
         {
+            cout << "\nExiting Program ... \n";
+            
             break;
         }
         // invalid choice
