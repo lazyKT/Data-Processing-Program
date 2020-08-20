@@ -61,7 +61,7 @@ int main()
         /* -- Option 4: Define Sorting Order -- */
         else if (CHOICE == 4)
         {
-
+            sort_order = def_sort_order(sort_order);
         }
         /* -- Option 5 : view data -- */
         else if (CHOICE == 5)

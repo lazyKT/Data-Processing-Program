@@ -5,11 +5,15 @@
 #include "Utils.h"
 
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <vector>
 #include <set>
 #include <string>
 #include <limits>
+
+#include "Point2D.h"
+#include "Point3D.h"
 
 
 // main menu
@@ -71,5 +75,52 @@ void extract_data(std::string &str, int* arr)
       break;
     }
     i++;
+  }
+}
+
+
+// sorting in Point2D
+void do_sorting(std::string &s_c, std::string &s_o, std::vector<Point2D*> &vec)
+{
+  if (s_c == "x-ordinate")
+  {
+    if (s_o == "ASC")
+      std::sort(vec.begin(), vec.end(), Point2D::comparebyX_Asc);
+    else
+      std::sort(vec.begin(), vec.end(), Point2D::comparebyX_Desc);
+  }
+  else if (s_c == "y-ordinate")
+  {
+    if (s_o == "ASC")
+      std::sort(vec.begin(), vec.end(), Point2D::comparebyY_Asc);
+    else
+      std::sort(vec.begin(), vec.end(), Point2D::comparebyY_Desc);
+  }
+}
+
+// sorting in Point3D
+void do_sorting(std::string &s_c, std::string &s_o, std::vector<Point3D*> &vec)
+{
+  //do sorting for Point3D
+  if (s_c == "x-ordinate")
+  {
+    if (s_o == "ASC")
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyX_Asc);
+    else
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyX_Desc);
+  }
+  else if (s_c == "y-ordinate")
+  {
+    if (s_o == "ASC")
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyY_Asc);
+    else
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyY_Desc);
+  }
+  else if (s_c == "z-ordinate")
+  {
+      if (s_o == "ASC")
+        std::sort(vec.begin(), vec.end(), Point3D::comparebyZ_Asc);
+      else
+        std::sort(vec.begin(), vec.end(), Point3D::comparebyZ_Desc);
   }
 }

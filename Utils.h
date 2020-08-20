@@ -10,6 +10,8 @@
 #include <set>
 #include <iostream>
 
+#include "Point2D.h"
+#include "Point3D.h"
 
 // print something like lists
 template <typename T>
@@ -31,6 +33,10 @@ void enter_to_continue();
 
 // process datasets
 void extract_data(std::string &str, int*);
-
+// sorting Point2D
+void do_sorting(std::string &s_c, std::string &s_o, std::vector<Point2D*> &vec);
+// sorting Point3D
+// overloaded function
+void do_sorting(std::string &s_c, std::string &s_o, std::vector<Point3D*> &vec);
 
 #endif

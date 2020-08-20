@@ -31,6 +31,16 @@ class Point3D : public Point2D
 
     // operator overloading
     friend std::ostream& operator<<(std::ostream& stream, Point3D* p);
+
+    // static member functions for sorting 
+    static bool comparebyX_Asc (Point3D*, Point3D*);
+    static bool comparebyX_Desc (Point3D*, Point3D*);
+    static bool comparebyY_Asc (Point3D*, Point3D*);
+    static bool comparebyY_Desc (Point3D*, Point3D*);
+    static bool comparebyZ_Asc (Point3D*, Point3D*);
+    static bool comparebyZ_Desc (Point3D*, Point3D*);
+    static bool comparebyScalar_Asc (Point3D*, Point3D*);
+    static bool comaprebyScalar_Desc (Point3D*, Point3D*);
 };
 
 

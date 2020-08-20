@@ -218,6 +218,25 @@ std::string filter_criteria(std::string &current)
 }
 
 
+// define sorting order: asc or desc
+std::string def_sort_order(std::string &current)
+{
+  char criteria;
+  std::string orders[2] = {"ASC", "DESC"};
+
+  std::cout <<"\n[ Specifying sorting order (current: " << current << ") ]\n";
+  std::cout << "\n\ta)\tASC (Ascending Order)\n";
+  std::cout << "\tb)\tDESC (Descending Order)\n";
+
+  std::cout << "\n\tPlease enter your criteria (a-b) :";
+  std::cin >> criteria;
+
+  std::cout << "\tSorting order successfully set to '" << orders[def_sub_choices(criteria)] << "'\n";
+
+  return orders[def_sub_choices(criteria)];
+}
+
+
 // set headers for view data
 void setHeaders(std::string &filter)
 {
@@ -258,11 +277,12 @@ void display(std::string &filter, std::string &sort_c, std::string &sort_o)
 
   if (filter == "Point2D")
   {
-    do_sorting(filter, sort_c, sort_o, p2_vec);
+    do_sorting(sort_c, sort_o, p2_vec);
     view_data(p2_vec); 
   }
   else if (filter == "Point3D")
   {
+    do_sorting(sort_c, sort_o, p3_vec);
     view_data(p3_vec);
   }
   else if (filter == "Line2D")

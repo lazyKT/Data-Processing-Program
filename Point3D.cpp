@@ -52,3 +52,69 @@ std::ostream& operator<<(std::ostream& stream, Point3D* p)
   return stream;
 }
 
+
+/* 
+  static sorting functions
+*/
+
+
+// sort by x-ordinate in ascending order
+bool Point3D::comparebyX_Asc(Point3D* p1, Point3D* p2)
+{
+  if (p1->getX() == p2->getX())
+    return p1->getY() < p2->getY();
+
+  return p1->getX() < p2->getX();
+}
+
+// sort by x-ordinate in descending order
+bool Point3D::comparebyX_Desc(Point3D* p1, Point3D* p2)
+{
+  // return the opposite of ascending order
+  return !(Point3D::comparebyX_Asc(p1, p2));
+}
+
+
+// sort by y-ordinate in ascending order
+bool Point3D::comparebyY_Asc( Point3D* p1, Point3D* p2 )
+{
+  if (p1->getY() < p2->getY())
+    return p1->getX() < p2->getX();
+
+  return p1->getY() < p2->getY();
+}
+
+// sort by y-ordinate in descending order
+bool Point3D::comparebyY_Desc( Point3D* p1, Point3D* p2)
+{
+  return !(Point3D::comparebyY_Asc(p1, p2));
+}
+
+
+// sort by z-ordinate in ascending order
+bool Point3D::comparebyZ_Asc( Point3D* p1, Point3D* p2)
+{
+  if (p1->getZ() == p2->getZ())
+    return p1->getX() < p2->getX();
+  
+  return p1->getZ() < p2->getZ();
+}
+
+// sort by z-ordinate in descending order
+bool Point3D::comparebyZ_Desc( Point3D* p1, Point3D* p2)
+{
+  return !(Point3D::comparebyZ_Asc(p1, p2));
+}
+
+
+// compare by scalar value in ascending order
+bool Point3D::comparebyScalar_Asc( Point3D* p1, Point3D* p2)
+{
+  return p1->getScalarValue() < p2->getScalarValue();
+}
+
+// compare by scalar value in descending order
+bool Point3D::comaprebyScalar_Desc( Point3D* p1, Point3D* p2)
+{
+  return p1->getScalarValue() > p2->getScalarValue();
+}
