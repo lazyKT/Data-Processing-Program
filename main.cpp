@@ -26,10 +26,6 @@ int main()
     set<string> dataset;
     vector<string> data_vec;
 
-    Point2D* p2 = new Point2D(3,4);
-    Point2D* p3 = new Point2D(3,4);
-    Line2D* l2 = new Line2D(*p2,*p3);
-
     while (true)
     {
         main_menu(filter, sort_criteria, sort_order);
@@ -52,10 +48,20 @@ int main()
             
             cout << "\nGoing back to main menu ... \n";
         }
-        /* -- Option 2 -- */
+        /* -- Option 2: Define Filtering Data  -- */
         else if (CHOICE == 2)
         {
             filter = filter_criteria(filter);
+        }
+        /* -- Option 3: Define Sorting Criteria -- */
+        else if (CHOICE == 3)
+        {
+            sort_criteria = def_sort_criteria(filter, sort_criteria);
+        }
+        /* -- Option 4: Define Sorting Order -- */
+        else if (CHOICE == 4)
+        {
+
         }
         /* -- Option 5 : view data -- */
         else if (CHOICE == 5)
@@ -72,6 +78,11 @@ int main()
             }
             enter_to_continue();
             cout << "\nGoing back to main menu ... \n\n";
+        }
+        /* -- Option 6: store data in text file -- */
+        else if (CHOICE == 6)
+        {
+          
         }
         /* -- Option 7 -- */
         else if (CHOICE == 7)

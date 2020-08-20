@@ -23,5 +23,7 @@ void process_data(std::set<std::string> &dataset);
 void display(std::string &filter, std::string &sort_c, std::string &sort_o);
 // filter data to be viewed: Option-2
 std::string filter_criteria(std::string &current);
+// define sorting criteria according to the filtered criteria
+std::string def_sort_criteria(std::string& filter, std::string& current);
 
 #endif

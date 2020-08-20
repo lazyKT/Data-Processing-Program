@@ -5,6 +5,7 @@
 #ifndef POINT2D_H
 #define POINT2D_H
 
+#include <iostream>
 #include <string>
 
 
@@ -29,6 +30,16 @@ class Point2D
     void setX(int x);
     void setY(int y);
 
+    // '<<' Operator Overloading
+    friend std::ostream& operator<< (std::ostream&, Point2D*);
+    
+    // static functions for Sorting 
+    static bool comparebyX_Asc(Point2D*, Point2D*);
+    static bool comparebyX_Desc(Point2D*, Point2D*);
+    static bool comparebyY_Asc(Point2D*, Point2D*);
+    static bool comparebyY_Desc(Point2D*, Point2D*);
+    static bool comparebyScalar_Asc(Point2D*, Point2D*);
+    static bool comparebyScalar_Desc(Point2D*, Point2D*);
 };
 
 

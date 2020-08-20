@@ -4,6 +4,7 @@
 **/
 #include <string>
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <set>
 #include <vector>
@@ -14,6 +15,7 @@
 #include "Point3D.h"
 #include "Line2D.h"
 #include "Line3D.h"
+#include "MyTemplates.h"
 
 
 // GLOBAL SCOPES
@@ -128,7 +130,8 @@ void process_data(std::set<std::string> &dataset)
 }
 
 
-int sub_choices(char &criteria)
+// sub_choices for filtered criteria
+int def_sub_choices(char &criteria)
 {
   if (criteria == 'a')
     return 0;
@@ -143,7 +146,58 @@ int sub_choices(char &criteria)
 }
 
 
+// define sorting criteria based on filtered data- Option 3
+std::string def_sort_criteria(std::string& filter, std::string& current)
+{
+  char choice;
+  std::string sort_c;
+  std::cout << "\n[ Specifying sorting criteria (current: " << current << ") ... ]\n";
 
+  if (filter == "Point2D")
+  {
+    std::string sub_choices[3] = {"x-ordinate", "y-ordinate", "distance"};
+    
+    std::cout << "\n\ta)\tX ordinate value\n";
+    std::cout << "\tb)\tY ordinate value\n";
+    std::cout << "\tc)\tDist. Fr Origin value\n";
+
+    std::cout << "\n\tPlease enter your criteria (a-c) : ";
+    std::cin >> choice;
+    sort_c = sub_choices[def_sub_choices(choice)];
+  }
+  else if (filter == "Point3D")
+  {
+    std::string sub_choices[4] = {"x-ordinate", "y-ordinate", "z-ordinate", "distance"};
+
+    std::cout << "\n\ta)\tX ordinate value\n";
+    std::cout << "\tb)\tY ordinate value\n";
+    std::cout << "\tc)\tZ ordinate value\n";
+    std::cout << "\td)\tDist. Fr Origin value\n";
+
+    std::cout << "\n\tPlease enter your criteria (a-d) : ";
+    std::cin >> choice;
+    sort_c = sub_choices[def_sub_choices(choice)];
+  }
+  else 
+  {
+    std::string sub_choices[3] = {"Pt.1", "Pt.2", "Length"};
+
+    std::cout << "\n\ta)\tX and Y ordinate values of Pt.1\n";
+    std::cout << "\tb)\tX and Y ordinate values of Pt.2\n";
+    std::cout << "\tc)\tLength\n";
+
+    std::cout << "\n\tPlease enter your criteria (a-c) : ";
+    std::cin >> choice;
+    sort_c = sub_choices[def_sub_choices(choice)];
+  }
+  std::cout << "\tSorting Criteria successfully set to " << sort_c << std::endl;
+  std::cout << "\n\tGoing back to main menu ... \n";
+
+  return sort_c;
+}
+
+
+// define data for later display Option: 2
 std::string filter_criteria(std::string &current)
 {
   char criteria;
@@ -157,22 +211,10 @@ std::string filter_criteria(std::string &current)
 
   std::cout << "\n\tPlease enter your criteria (a-d) : ";
   std::cin >> criteria;
-  std::cout << "\n\tFilter Criteria successfully set to " << crit[sub_choices(criteria)] << std::endl;
+  std::cout << "\n\tFilter Criteria successfully set to " << crit[def_sub_choices(criteria)] << std::endl;
   std::cout << "\nGoing back to main menu\n\n";
 
-  return crit[sub_choices(criteria)];
-}
-
-
-
-////////////////////////////////////////////////////
-// overload function of '<<' operator for Point2D //
-////////////////////////////////////////////////////
-std::ostream& operator<<(std::ostream& stream, Point2D* p)
-{
-  stream << "[" << std::setw(4) << p->getX() << ", " << std::setw(4) << p->getY() << "]\t" << p->getScalarValue();
-
-  return stream;
+  return crit[def_sub_choices(criteria)];
 }
 
 
@@ -204,6 +246,7 @@ void show_criteria(std::string &filter, std::string &sort_c, std::string &sort_o
 }
 
 
+// display data
 void display(std::string &filter, std::string &sort_c, std::string &sort_o)
 {
 
@@ -215,27 +258,19 @@ void display(std::string &filter, std::string &sort_c, std::string &sort_o)
 
   if (filter == "Point2D")
   {
-    for(Point2D* p2: p2_vec)
-    {
-      std::cout << p2 ;
-      std::cout << std::endl;
-    }
+    do_sorting(filter, sort_c, sort_o, p2_vec);
+    view_data(p2_vec); 
   }
   else if (filter == "Point3D")
   {
-    for (Point3D* p3 : p3_vec)
-    {
-      std::cout << p3;
-    }
+    view_data(p3_vec);
   }
   else if (filter == "Line2D")
   {
-    for (Line2D* l : l2_vec)
-      std::cout << l;
+    view_data(l2_vec);
   }
   else if ( filter == "Line3D")
   {
-    for (Line3D* l3 : l3_vec)
-      std::cout << l3;
+    view_data(l3_vec);
   }
 }
