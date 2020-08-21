@@ -82,7 +82,9 @@ int main()
         /* -- Option 6: store data in text file -- */
         else if (CHOICE == 6)
         {
-          
+            store_data(filter);
+
+            cout << "\nGoing Back to Main Menu ... \n";
         }
         /* -- Option 7 -- */
         else if (CHOICE == 7)

@@ -52,6 +52,16 @@ std::ostream& operator<<(std::ostream& stream, Point3D* p)
   return stream;
 }
 
+// operator overloading for std::ofstream '<<' operator
+std::ofstream& operator<< (std::ofstream& opt, Point3D* p)
+{
+  opt << "[" << std::setw(4) << p->getX() << ", " << std::setw(4) << p->getY() << ", " 
+    << std::setw(4) << p->getZ() << "]\t" << p->getScalarValue() << std::endl;
+
+  return opt;
+}
+
+
 
 /* 
   static sorting functions

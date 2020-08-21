@@ -6,6 +6,7 @@
 #define LINE3D_H
 
 #include <iostream>
+#include <fstream>
 
 #include "Line2D.h"
 #include "Point3D.h"
@@ -36,6 +37,7 @@ class Line3D: public Line2D
 
     // '<<'operator overloading
     friend std::ostream& operator<< (std::ostream&, Line3D*);
+    friend std::ofstream& operator<< (std:: ofstream&, Line3D*);
 };
 
 

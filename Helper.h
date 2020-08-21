@@ -28,5 +28,6 @@ std::string def_sort_criteria(std::string& filter, std::string& current);
 // define sorting orders
 std::string def_sort_order(std::string &current);
 // store data in txt file
+void store_data(std::string &filter);
 
 #endif

@@ -6,6 +6,7 @@
 #define POINT2D_H
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <sstream>
 
@@ -33,7 +34,7 @@ class Point2D
 
     // '<<' Operator Overloading
     friend std::ostream& operator<< (std::ostream&, Point2D*);
-    friend std::stringstream& operator<<(std::stringstream& ss, Point2D*);
+    friend std::ofstream& operator<<(std::ofstream& ofs, Point2D*);
     
     // static functions for Sorting 
     static bool comparebyX_Asc(Point2D*, Point2D*);

@@ -53,7 +53,11 @@ double Line2D::getScalarValue()
 }
 
 
-// operator overloading
+/**
+ *  operator overloading 
+ * */
+
+// overloading iostram '<<' operator
 std::ostream& operator<< (std::ostream& stream, Line2D* l2)
 {
   stream << "[" << std::setw(4) << (l2->getPt1()).getX() << ", " << std::setw(4)
@@ -62,6 +66,17 @@ std::ostream& operator<< (std::ostream& stream, Line2D* l2)
 
   return stream;
 }
+
+// overloading file stream '<<' operator
+std::ofstream& operator<< (std::ofstream& opt, Line2D* l2)
+{
+  opt << "[" << std::setw(4) << (l2->getPt1()).getX() << ", " << std::setw(4)
+    << (l2->getPt1()).getY() << "]\t[" << std::setw(4) << (l2->getPt2()).getX() << ", "
+    << std::setw(4) << (l2->getPt2()).getY() << "]\t" << l2->getScalarValue() << std::endl;  
+
+  return opt;
+}
+
 
 
 // static functions for sorting

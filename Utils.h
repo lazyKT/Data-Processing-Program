@@ -9,6 +9,7 @@
 #include <vector>
 #include <set>
 #include <iostream>
+#include <fstream>
 
 #include "Point2D.h"
 #include "Point3D.h"

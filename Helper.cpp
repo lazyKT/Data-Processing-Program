@@ -9,6 +9,7 @@
 #include <set>
 #include <vector>
 #include <iomanip>
+#include <sstream>
 
 #include "Utils.h"
 #include "Point2D.h"
@@ -236,6 +237,31 @@ std::string def_sort_order(std::string &current)
 }
 
 
+
+std::string write_header(std::string &filter)
+{
+  std::stringstream ss;
+
+  if (filter == "Point2D")
+    ss << std::setw(5) << "X" << std::setw(6) << "Y" << "\tDist. Fr Origin\n";
+
+  else if ( filter == "Point3D" )
+    ss << std::setw(5) << "X" << std::setw(6) << "Y" << std::setw(5) << "Z" << "\tDist. Fr Origin\n";
+  
+  else if ( filter == "Line2D" )
+    ss << std::setw(5) << "P1-X" << std::setw(7) << "P1-Y\t" << std::setw(5) << "P2-X" << std::setw(7) << "P2-Y\t"
+      << "Length\n";
+
+  else if ( filter == "Line3D" )
+    ss << std::setw(5) << "P1-X" << std::setw(6) << "P1-Y" << std::setw(6) << "P1-Z"
+      << std::setw(9) << "P2-X" << std::setw(6) << "P2-Y" << std::setw(7) << "P2-Z\t" << std::setw(5) 
+      << "Length\n" << "--------";
+
+
+  return ss.str();
+}
+
+
 /* 
 * set headers for view data
 */
@@ -282,7 +308,8 @@ void display(std::string &filter, std::string &sort_c, std::string &sort_o)
   show_criteria(filter, sort_c, sort_o);
 
   // display headers
-  setHeaders(filter);
+  std::cout << write_header(filter);
+  std::cout << "----------------------------------------\n";
 
   if (filter == "Point2D")
   {
@@ -303,4 +330,36 @@ void display(std::string &filter, std::string &sort_c, std::string &sort_o)
   {
     view_data(l3_vec);
   }
+}
+
+
+/**
+ * Store Data
+*/
+void store_data (std::string &filter)
+{
+
+  std::string filename;
+
+  std::cout << "Please enter the file name : ";
+  std::cin >> filename;
+
+  std::ofstream opt(filename);
+
+  opt << write_header(filter);
+  opt << "----------------------------------------\n";
+
+  if ( filter == "Point2D" )
+    write_data_tmpl(opt, p2_vec);
+  
+  else if ( filter == "Point3D" )
+    write_data_tmpl(opt, p3_vec);
+  
+  else if ( filter == "Line2D" )
+    write_data_tmpl(opt, l2_vec);
+  
+  else 
+    write_data_tmpl(opt, l3_vec);
+
+  std::cout << std::endl << filter << " data has been stored in " << filename << std::endl;
 }

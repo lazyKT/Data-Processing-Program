@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <cmath>
 
 #include "Point3D.h"
@@ -66,4 +67,15 @@ std::ostream& operator<< (std::ostream& out, Line3D* l3)
     << (l3->getPt2()).getZ() << "]\t" << std::setw(5) << l3->getScalarValue() << std::endl;
 
   return out;
+}
+
+// overload function for file stream '<<' operator
+std::ofstream& operator<< (std::ofstream& opt, Line3D* l3)
+{
+  opt << "[" << std::setw(4) << (l3->getPt1()).getX() << ", " << std::setw(4) << (l3->getPt1()).getY()
+    << ", " << std::setw(4) << (l3->getPt1()).getZ() << "]" << std::setw(4)  << "[" << std::setw(4) 
+    << (l3->getPt2()).getX() << ", " << std::setw(4) << (l3->getPt2()).getY() << ", " << std::setw(4)
+    << (l3->getPt2()).getZ() << "]\t" << std::setw(5) << l3->getScalarValue() << std::endl;
+
+  return opt;
 }

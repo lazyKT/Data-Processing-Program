@@ -5,6 +5,7 @@
 #ifndef LINE2D_H
 #define LINE2D_H
 
+#include <fstream>
 #include <iostream>
 
 #include "Point2D.h"
@@ -36,6 +37,7 @@ class Line2D
     // operator overlaoding
     // similar to toString() in java
     friend std::ostream& operator<< (std::ostream& stream, Line2D* l2);
+    friend std::ofstream& operator<< (std::ofstream& opt, Line2D*);
 
     // static function for sorting
     static bool comparebyPt1_Asc (Line2D*, Line2D*);

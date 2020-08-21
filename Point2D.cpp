@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <fstream>
 #include <sstream>
 
 #include "Point2D.h"
@@ -58,13 +59,14 @@ std::ostream& operator<<(std::ostream& stream, Point2D* p)
   return stream;
 }
 
-std::stringstream& operator<< (std::stringstream& ss, Point2D* p)
+std::ofstream& operator<< (std::ofstream& opt, Point2D* p)
 {
-  ss << "[" << std::setw(4) << p->getX() << ", " << std::setw(4) << p->getY() 
+  opt << "[" << std::setw(4) << p->getX() << ", " << std::setw(4) << p->getY() 
     << "]\t" << p->getScalarValue() << std::endl;
 
-  return ss;
+  return opt;
 }
+
 
 
 /**
