@@ -105,7 +105,6 @@ void process_data(std::set<std::string> &dataset)
       Line2D* l2 = new Line2D(*point1, *point2);
       l2_vec.push_back(l2);
 
-        //std::cerr << "str_1 = " << str_1 << ", str_2 = " << str_2 << std::endl;
     }
     // Line3D
     else if (type == "Line3D")
