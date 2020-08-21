@@ -14,6 +14,8 @@
 
 #include "Point2D.h"
 #include "Point3D.h"
+#include "Line2D.h"
+#include "Line3D.h"
 
 
 // main menu
@@ -96,6 +98,13 @@ void do_sorting(std::string &s_c, std::string &s_o, std::vector<Point2D*> &vec)
     else
       std::sort(vec.begin(), vec.end(), Point2D::comparebyY_Desc);
   }
+  else
+  {
+    if (s_o == "ASC")
+      std::sort(vec.begin(), vec.end(), Point2D::comparebyScalar_Asc);
+    else
+      std::sort(vec.begin(), vec.end(), Point2D::comparebyScalar_Desc);
+  }
 }
 
 // sorting in Point3D
@@ -118,9 +127,44 @@ void do_sorting(std::string &s_c, std::string &s_o, std::vector<Point3D*> &vec)
   }
   else if (s_c == "z-ordinate")
   {
-      if (s_o == "ASC")
-        std::sort(vec.begin(), vec.end(), Point3D::comparebyZ_Asc);
-      else
-        std::sort(vec.begin(), vec.end(), Point3D::comparebyZ_Desc);
+    if (s_o == "ASC")
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyZ_Asc);
+    else
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyZ_Desc);
   }
+  else
+  {
+    if (s_o == "ASC")
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyScalar_Asc);
+    else
+      std::sort(vec.begin(), vec.end(), Point3D::comparebyScalar_Desc);
+  }
+}
+
+
+// do sorting for Line2D
+void do_sorting (std::string &s_c, std::string &s_o, std::vector<Line2D*> &vec)
+{
+  if (s_c == "Pt. 2")
+  {
+    if (s_o == "DESC")
+      std::sort(vec.begin(), vec.end(), Line2D::comparebyPt2_Desc);
+    else
+      std::sort(vec.begin(), vec.end(), Line2D::comparebyPt2_Asc);
+  }
+  else if (s_c == "Length")
+  {
+    if (s_o == "DESC")
+      std::sort(vec.begin(), vec.end(), Line2D::comparebyLength_Desc);
+    else
+      std::sort(vec.begin(), vec.end(), Line2D::comparebyLength_Asc);
+  }
+  else
+  {
+    if (s_o == "DESC")
+      std::sort(vec.begin(), vec.end(), Line2D::comparebyPt1_Desc);
+    else
+      std::sort(vec.begin(), vec.end(), Line2D::comparebyPt1_Asc);
+  }
+  
 }

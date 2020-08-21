@@ -28,6 +28,7 @@ class Line3D: public Line2D
     // getters
     Point3D getPt1();
     Point3D getPt2();
+    double getScalarValue() override;
 
     // setters
     void setPt1( Point3D pt1 );

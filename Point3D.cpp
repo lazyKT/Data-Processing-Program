@@ -78,7 +78,7 @@ bool Point3D::comparebyX_Desc(Point3D* p1, Point3D* p2)
 // sort by y-ordinate in ascending order
 bool Point3D::comparebyY_Asc( Point3D* p1, Point3D* p2 )
 {
-  if (p1->getY() < p2->getY())
+  if (p1->getY() == p2->getY())
     return p1->getX() < p2->getX();
 
   return p1->getY() < p2->getY();

@@ -62,3 +62,50 @@ std::ostream& operator<< (std::ostream& stream, Line2D* l2)
 
   return stream;
 }
+
+
+// static functions for sorting
+
+// compare by Pt-1 in ascending order
+bool Line2D::comparebyPt1_Asc (Line2D* l1, Line2D* l2)
+{
+  if ( (l1->getPt1()).getX() == (l2->getPt1()).getX() )
+    return (l1->getPt1()).getY() < (l2->getPt1()).getY();
+  
+  return (l1->getPt1()).getX() < (l2->getPt1()).getX();
+}
+
+// compare by pt-1 in descending order
+bool Line2D::comparebyPt1_Desc (Line2D* l1, Line2D* l2)
+{
+  return !(comparebyPt1_Asc(l1, l2));
+}
+
+
+// compare by Pt-2 in ascending order
+bool Line2D::comparebyPt2_Asc (Line2D* l1, Line2D* l2)
+{
+  if ( (l1->getPt2()).getX() == (l2->getPt2()).getX() )
+    return (l1->getPt2()).getY() < (l2->getPt2()).getY();
+  
+  return (l1->getPt2()).getX() < (l2->getPt2()).getX();
+}
+
+// compare by pt-2 in descending order
+bool Line2D::comparebyPt2_Desc (Line2D* l1, Line2D* l2)
+{
+  return !(comparebyPt2_Asc(l1, l2));
+}
+
+
+// compare by Length value in ascending order
+bool Line2D::comparebyLength_Asc (Line2D* l1, Line2D* l2)
+{
+  return l1->getScalarValue() < l2->getScalarValue();
+}
+
+// compare by Length value in descending order
+bool Line2D::comparebyLength_Desc (Line2D* l1, Line2D* l2)
+{
+  return l1->getScalarValue() > l2->getScalarValue();
+}

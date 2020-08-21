@@ -4,6 +4,8 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <sstream>
+
 #include "Point2D.h"
 
 // default constructor
@@ -56,6 +58,18 @@ std::ostream& operator<<(std::ostream& stream, Point2D* p)
   return stream;
 }
 
+std::stringstream& operator<< (std::stringstream& ss, Point2D* p)
+{
+  ss << "[" << std::setw(4) << p->getX() << ", " << std::setw(4) << p->getY() 
+    << "]\t" << p->getScalarValue() << std::endl;
+
+  return ss;
+}
+
+
+/**
+ * Sorting
+*/
 
 // Sort by X in ascending order
 bool Point2D::comparebyX_Asc(Point2D * p1, Point2D * p2)

@@ -179,7 +179,7 @@ std::string def_sort_criteria(std::string& filter, std::string& current)
   }
   else 
   {
-    std::string sub_choices[3] = {"Pt.1", "Pt.2", "Length"};
+    std::string sub_choices[3] = {"Pt. 1", "Pt. 2", "Length"};
 
     std::cout << "\n\ta)\tX and Y ordinate values of Pt.1\n";
     std::cout << "\tb)\tX and Y ordinate values of Pt.2\n";
@@ -236,25 +236,33 @@ std::string def_sort_order(std::string &current)
 }
 
 
-// set headers for view data
+/* 
+* set headers for view data
+*/
 void setHeaders(std::string &filter)
 {
   if ( filter == "Point2D")
-    std::cout << std::setw(5) << "X" << std::setw(6) << "Y" << "\t\tDist. Fr Origin\n";
+    std::cout << std::setw(5) << "X" << std::setw(6) << "Y" << "\tDist. Fr Origin\n";
   
   else if ( filter == "Point3D")
     std::cout << std::setw(5) << "X" << std::setw(6) << "Y" << std::setw(5) << "Z" << "\tDist. Fr Origin\n";
+  
   else if ( filter == "Line2D") 
-  {
-    std::cout << std::setw(5) << "P1-X" << std::setw(7) << "P1-Y\t\t" << std::setw(6) << "P2-X" << std::setw(7) << "P2-Y\t"
+    std::cout << std::setw(5) << "P1-X" << std::setw(7) << "P1-Y\t" << std::setw(5) << "P2-X" << std::setw(7) << "P2-Y\t"
       << "Length\n";
-  }
+  
+  else if ( filter == "Line3D")
+    std::cout << std::setw(5) << "P1-X" << std::setw(6) << "P1-Y" << std::setw(6) << "P1-Z"
+      << std::setw(9) << "P2-X" << std::setw(6) << "P2-Y" << std::setw(7) << "P2-Z\t" << std::setw(5) 
+      << "Length\n" << "--------";
 
   std::cout << "----------------------------------------\n";
 }
 
 
-// show criteria for view data
+/**
+ *  show criteria for view data*
+ */
 void show_criteria(std::string &filter, std::string &sort_c, std::string &sort_o)
 {
   std::cout << "\n[ View Data ... ]\n";
@@ -264,7 +272,9 @@ void show_criteria(std::string &filter, std::string &sort_c, std::string &sort_o
 }
 
 
-// display data
+/**
+ *  display data 
+ * */
 void display(std::string &filter, std::string &sort_c, std::string &sort_o)
 {
 
@@ -286,6 +296,7 @@ void display(std::string &filter, std::string &sort_c, std::string &sort_o)
   }
   else if (filter == "Line2D")
   {
+    do_sorting(sort_c, sort_o, l2_vec);
     view_data(l2_vec);
   }
   else if ( filter == "Line3D")
