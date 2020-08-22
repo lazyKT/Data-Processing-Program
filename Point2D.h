@@ -35,6 +35,8 @@ class Point2D
     // '<<' Operator Overloading
     friend std::ostream& operator<< (std::ostream&, Point2D*);
     friend std::ofstream& operator<<(std::ofstream& ofs, Point2D*);
+
+    bool operator== (const Point2D&);
     
     // static functions for Sorting 
     static bool comparebyX_Asc(Point2D*, Point2D*);

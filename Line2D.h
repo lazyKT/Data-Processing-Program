@@ -38,6 +38,8 @@ class Line2D
     // similar to toString() in java
     friend std::ostream& operator<< (std::ostream& stream, Line2D* l2);
     friend std::ofstream& operator<< (std::ofstream& opt, Line2D*);
+    
+    bool operator== (const Line2D&);
 
     // static function for sorting
     static bool comparebyPt1_Asc (Line2D*, Line2D*);

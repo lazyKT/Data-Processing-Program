@@ -67,6 +67,10 @@ std::ofstream& operator<< (std::ofstream& opt, Point2D* p)
   return opt;
 }
 
+bool Point2D::operator== (const Point2D& p)
+{
+  return x == p.x && y == p.y;
+}
 
 
 /**

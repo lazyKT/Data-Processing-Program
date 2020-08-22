@@ -80,10 +80,16 @@ std::ofstream& operator<< (std::ofstream& opt, Line3D* l3)
   return opt;
 }
 
+// '==' overloaded operator
+bool Line3D::operator== (const Line3D& l)
+{
+  return pt1 == l.pt1 && pt2 == l.pt2;
+}
+
+
 /**
  * Static functions for sorting
 */
-
 // sort by Point1 in ascending order
 bool Line3D::comparebyPt1_Asc (Line3D* l1, Line3D* l2)
 {

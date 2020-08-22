@@ -61,6 +61,11 @@ std::ofstream& operator<< (std::ofstream& opt, Point3D* p)
   return opt;
 }
 
+bool Point3D::operator== (const Point3D& p)
+{
+  return x == p.x && y == p.y && z == p.z;
+}
+
 
 
 /* 

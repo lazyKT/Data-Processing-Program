@@ -33,6 +33,7 @@ class Point3D : public Point2D
     // operator overloading
     friend std::ostream& operator<<(std::ostream& stream, Point3D* p);
     friend std::ofstream& operator<< (std::ofstream& opt, Point3D* p);
+    bool operator== (const Point3D&);
 
     // static member functions for sorting 
     static bool comparebyX_Asc (Point3D*, Point3D*);

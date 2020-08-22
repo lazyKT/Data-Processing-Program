@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <algorithm>
+#include <cmath>
 
 #include "Point2D.h"
 #include "Point3D.h"
@@ -26,4 +26,20 @@ void write_data_tmpl (std::ofstream &opt, std::vector<T> vec)
 {
   for (T t : vec)
     opt << t;
+}
+
+
+// scalar difference
+template <typename T>
+double scalar_difference (T t1, T t2)
+{
+  return abs( t1->getScalarValue() - t2->getScalarValue() );
+}
+
+
+// equals
+template <typename T>
+bool equals (T t1, T t2, std::string classname)
+{
+    return t == t;
 }

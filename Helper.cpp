@@ -306,6 +306,7 @@ void display(std::string &filter, std::string &sort_c, std::string &sort_o)
   }
   else if ( filter == "Line3D")
   {
+    do_sorting(sort_c, sort_o, l3_vec);
     view_data(l3_vec);
   }
 }

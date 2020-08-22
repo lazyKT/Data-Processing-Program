@@ -77,6 +77,10 @@ std::ofstream& operator<< (std::ofstream& opt, Line2D* l2)
   return opt;
 }
 
+bool Line2D::operator== (const Line2D& l1)
+{ 
+  return pt1 == l1.pt1 && pt2 == l1.pt2;
+}
 
 
 // static functions for sorting
