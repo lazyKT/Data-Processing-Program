@@ -79,3 +79,50 @@ std::ofstream& operator<< (std::ofstream& opt, Line3D* l3)
 
   return opt;
 }
+
+/**
+ * Static functions for sorting
+*/
+
+// sort by Point1 in ascending order
+bool Line3D::comparebyPt1_Asc (Line3D* l1, Line3D* l2)
+{
+  if ( (l1->getPt1()).getX() == (l2->getPt1()).getX() )
+    return (l1->getPt1()).getY() < (l2->getPt1()).getY();
+  
+  return (l1->getPt1()).getX() < (l2->getPt1()).getX();
+}
+
+// sort by Point1 in descending order
+bool Line3D::comparebyPt1_Desc (Line3D* l1, Line3D* l2)
+{
+  return !(Line3D::comparebyPt1_Asc(l1, l2));
+}
+
+// sort by Point2 in ascending order
+bool Line3D::comparebyPt2_Asc (Line3D* l1, Line3D* l2)
+{
+  if ( (l1->getPt2()).getX() == (l2->getPt2()).getX() )
+    return (l1->getPt2()).getY() < (l2->getPt2()).getY();
+  
+  return (l1->getPt2()).getX() < (l2->getPt2()).getX();
+}
+
+// sort by Point2 in descending order
+bool Line3D::comparebyPt2_Desc (Line3D* l1, Line3D* l2)
+{
+  return !(Line3D::comparebyPt2_Asc(l1, l2));
+}
+
+// sort by Length value in ascending order
+bool Line3D::comparebyLength_Asc (Line3D* l1, Line3D* l2)
+{
+  return l1->getScalarValue() < l2->getScalarValue();
+}
+
+// sort by length value in descednig order
+
+bool Line3D::comparebyLength_Desc (Line3D* l1, Line3D* l2)
+{
+  return l1->getScalarValue() > l2->getScalarValue();
+}

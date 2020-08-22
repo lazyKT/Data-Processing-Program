@@ -168,3 +168,31 @@ void do_sorting (std::string &s_c, std::string &s_o, std::vector<Line2D*> &vec)
   }
   
 }
+
+
+// do sorting for Line3D
+void do_sorting (std::string &s_c, std::string &s_o, std::vector<Line3D*> &vec)
+{
+  if (s_c == "Pt. 2")
+  {
+    if (s_o == "DESC")
+      std::sort(vec.begin(), vec.end(), Line3D::comparebyPt2_Desc);
+    else
+      std::sort(vec.begin(), vec.end(), Line2D::comparebyPt2_Asc);
+  }
+  else if (s_c == "Length")
+  {
+    if (s_o == "DESC")
+      std::sort(vec.begin(), vec.end(), Line3D::comparebyLength_Desc);
+    else
+      std::sort(vec.begin(), vec.end(), Line3D::comparebyLength_Asc);
+  }
+  else
+  {
+    if (s_o == "DESC")
+      std::sort(vec.begin(), vec.end(), Line3D::comparebyPt1_Desc);
+    else
+      std::sort(vec.begin(), vec.end(), Line3D::comparebyPt1_Asc);
+  }
+  
+}

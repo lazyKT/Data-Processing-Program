@@ -38,6 +38,14 @@ class Line3D: public Line2D
     // '<<'operator overloading
     friend std::ostream& operator<< (std::ostream&, Line3D*);
     friend std::ofstream& operator<< (std:: ofstream&, Line3D*);
+
+    // static functions for sorting
+    static bool comparebyPt1_Asc (Line3D*, Line3D*);
+    static bool comparebyPt1_Desc (Line3D*, Line3D*);
+    static bool comparebyPt2_Asc (Line3D*, Line3D*);
+    static bool comparebyPt2_Desc (Line3D*, Line3D*);
+    static bool comparebyLength_Asc (Line3D*, Line3D*);
+    static bool comparebyLength_Desc (Line3D*, Line3D*);
 };
 
 

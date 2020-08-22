@@ -43,5 +43,7 @@ void do_sorting (std::string &s_c, std::string &s_o, std::vector<Point2D*> &vec)
 void do_sorting (std::string &s_c, std::string &s_o, std::vector<Point3D*> &vec);
 // an overloaded function for sorting Line2D
 void do_sorting (std::string &s_c, std::string &s_o, std::vector<Line2D*> &vec);
+// an overloaded function for sorting Line3D
+void do_sorting (std::string &s_c, std::string &s_o, std::vector<Line3D*> &vec);
 
 #endif
