@@ -1,4 +1,7 @@
-Assn3.exe
-main.o
+*.o
 
 *.txt
+
+*.doc
+
+*.exe

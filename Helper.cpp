@@ -129,7 +129,6 @@ void process_data(std::set<std::string> &dataset)
   }
 }
 
-
 // sub_choices for filtered criteria
 int def_sub_choices(char &criteria)
 {
@@ -143,6 +142,16 @@ int def_sub_choices(char &criteria)
     return 3;
   else
     return 0;
+}
+
+
+// define default criteria
+std::string set_default_criteria (std::string &filter)
+{
+  if ( filter == "Line2D" || filter == "Line3D")
+    return "Pt. 1";
+  
+  return "x-ordinate"; 
 }
 
 
@@ -256,8 +265,8 @@ std::string write_header(std::string &filter)
 
   else if ( filter == "Line3D" )
     ss << std::setw(5) << "P1-X" << std::setw(6) << "P1-Y" << std::setw(6) << "P1-Z"
-      << std::setw(9) << "P2-X" << std::setw(6) << "P2-Y" << std::setw(7) << "P2-Z\t" << std::setw(5) 
-      << "Length\n" << "--------";
+      << std::setw(9) << "P2-X" << std::setw(6) << "P2-Y" << std::setw(6) << "   P2-Z\t" << std::setw(5) 
+      << "   Length\n" << "--------";
 
 
   return ss.str();
@@ -341,4 +350,27 @@ void store_data (std::string &filter)
     write_data_tmpl(opt, l3_vec);
 
   std::cout << std::endl << filter << " data has been stored in " << filename << std::endl;
+}
+
+
+// free back the dynamic allocations
+void free_alloc()
+{
+
+  std::cout << "\nFree back the resources ... \n";
+
+  for (Point2D* p2 : p2_vec)
+    delete p2;
+  
+  for (Point3D* p3 : p3_vec)
+    delete p3;
+
+  for (Line2D* l2 : l2_vec)
+    delete l2;
+
+  for (Line3D* l3 : l3_vec)
+    delete l3;
+
+  std::cout << "\nExiting the program . . .\n";
+  std::cout << "\nProgram Exited (0) .\n\n";
 }

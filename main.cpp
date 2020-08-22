@@ -14,7 +14,7 @@
 
 using namespace std;
 
-int CHOICE = 0;
+char CHOICE;
 string filter = "Point2D";
 string sort_order = "ASC";
 string sort_criteria = "x-ordinate";
@@ -34,7 +34,7 @@ int main()
         cin >> CHOICE;
 
         /* -- Option 1 -- */
-        if (CHOICE == 1)
+        if (CHOICE == '1')
         {
             data_ready = read_data(dataset);
             //Print<set<string>> (dataset);
@@ -49,22 +49,23 @@ int main()
             cout << "\nGoing back to main menu ... \n";
         }
         /* -- Option 2: Define Filtering Data  -- */
-        else if (CHOICE == 2)
+        else if (CHOICE == '2')
         {
             filter = filter_criteria(filter);
+            sort_criteria = set_default_criteria(filter);
         }
         /* -- Option 3: Define Sorting Criteria -- */
-        else if (CHOICE == 3)
+        else if (CHOICE == '3')
         {
             sort_criteria = def_sort_criteria(filter, sort_criteria);
         }
         /* -- Option 4: Define Sorting Order -- */
-        else if (CHOICE == 4)
+        else if (CHOICE == '4')
         {
             sort_order = def_sort_order(sort_order);
         }
         /* -- Option 5 : view data -- */
-        else if (CHOICE == 5)
+        else if (CHOICE == '5')
         {
             // only if the data is read in successfully, display data
             if (data_ready)
@@ -80,24 +81,23 @@ int main()
             cout << "\nGoing back to main menu ... \n\n";
         }
         /* -- Option 6: store data in text file -- */
-        else if (CHOICE == 6)
+        else if (CHOICE == '6')
         {
             store_data(filter);
 
             cout << "\nGoing Back to Main Menu ... \n";
         }
         /* -- Option 7 -- */
-        else if (CHOICE == 7)
-        {
-            cout << "\nExiting Program ... \n";
-            
+        else if (CHOICE == '7')
             break;
-        }
+
         // invalid choice
         else
             std::cout << "\nInvalid Choice.\n\nGoing back to main menu ... \n\n";
-            //enter_to_continue();
     }
+
+    // free dynamic allocations
+    free_alloc();
 
     return 0;
 }

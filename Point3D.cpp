@@ -42,12 +42,13 @@ int Point3D::getZ()
 }
 
 
+
 // operatoer overloading for '<<' operator
 std::ostream& operator<<(std::ostream& stream, Point3D* p)
 {
 
   stream << "[" << std::setw(4) << p->getX() << ", " << std::setw(4) << p->getY() << ", " 
-    << std::setw(4) << p->getZ() << "]\t" << p->getScalarValue() << std::endl;
+    << std::setw(4) << p->getZ() << "]\t"  << p->getScalarValue() << std::endl;
 
   return stream;
 }

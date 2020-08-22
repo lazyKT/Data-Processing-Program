@@ -21,13 +21,14 @@ Line2D::Line2D( P2 pt1, P2 pt2 )
 {}
 
 // destructor
-Line2D::~Line2D() { std::cout << "Line2D destroyed\n"; }
+Line2D::~Line2D() {}
 
 
 // setters
 void Line2D::setLength()
 {
-  this->length = sqrt(pow((this->getPt1()).getScalarValue(), 2.00) + pow((this->getPt2()).getScalarValue(), 2.00));
+  this->length = sqrt( pow(( (this->getPt1()).getX() - (this->getPt2()).getX() ), 2.00) 
+    + pow( (this->getPt1()).getY() - (this->getPt2()).getY(), 2.00 ) );
 }
 
 void Line2D::setPt1(P2 pt1)

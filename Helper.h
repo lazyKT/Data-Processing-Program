@@ -19,7 +19,9 @@ bool read_data(std::set<std::string> &dataset);
 
 // process the data from file, to display
 void process_data(std::set<std::string> &dataset);
-
+// set default criteria for different data
+std::string set_default_criteria (std::string &filter);
+// display data
 void display(std::string &filter, std::string &sort_c, std::string &sort_o);
 // filter data to be viewed: Option-2
 std::string filter_criteria(std::string &current);
@@ -29,5 +31,7 @@ std::string def_sort_criteria(std::string& filter, std::string& current);
 std::string def_sort_order(std::string &current);
 // store data in txt file
 void store_data(std::string &filter);
+// free back dynamic memory allocations
+void free_alloc();
 
 #endif

@@ -24,7 +24,7 @@ Line3D::Line3D( P3 pt1, P3 pt2)
   }
 
 // destructor
-Line3D::~Line3D(){ std::cout << "Point3D destroyed\n"; }
+Line3D::~Line3D(){}
 
 
 // getters
@@ -64,7 +64,7 @@ std::ostream& operator<< (std::ostream& out, Line3D* l3)
   out << "[" << std::setw(4) << (l3->getPt1()).getX() << ", " << std::setw(4) << (l3->getPt1()).getY()
     << ", " << std::setw(4) << (l3->getPt1()).getZ() << "]" << std::setw(4)  << "[" << std::setw(4) 
     << (l3->getPt2()).getX() << ", " << std::setw(4) << (l3->getPt2()).getY() << ", " << std::setw(4)
-    << (l3->getPt2()).getZ() << "]\t" << std::setw(5) << l3->getScalarValue() << std::endl;
+    << (l3->getPt2()).getZ() << "]\t   " << l3->getScalarValue() << std::endl;
 
   return out;
 }
@@ -75,7 +75,7 @@ std::ofstream& operator<< (std::ofstream& opt, Line3D* l3)
   opt << "[" << std::setw(4) << (l3->getPt1()).getX() << ", " << std::setw(4) << (l3->getPt1()).getY()
     << ", " << std::setw(4) << (l3->getPt1()).getZ() << "]" << std::setw(4)  << "[" << std::setw(4) 
     << (l3->getPt2()).getX() << ", " << std::setw(4) << (l3->getPt2()).getY() << ", " << std::setw(4)
-    << (l3->getPt2()).getZ() << "]\t" << std::setw(5) << l3->getScalarValue() << std::endl;
+    << (l3->getPt2()).getZ() << "]\t   " << l3->getScalarValue() << std::endl;
 
   return opt;
 }
